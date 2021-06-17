@@ -8,13 +8,13 @@ const typeDefs = gql`
         displayName: String
     }
     type Query {
-        userProfile(id: String): UserProfile
+        firebase_user_profile(id: String): UserProfile
     }
 `;
 
 const resolvers = {
     Query: {
-        userProfile: async (_: any, args: any) => {
+        firebase_user_profile: async (_: any, args: any) => {
             if (!args.id) return null;
             const { uid, email, displayName } = await auth().getUser(args.id);
             return {
